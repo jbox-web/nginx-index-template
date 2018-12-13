@@ -76,7 +76,7 @@
         <xsl:choose>
           <xsl:when test="$first = ''">
             <li class="breadcrumb-item">
-              <i class="fa fa-home"></i><a href="/">Home</a>
+              <i class="fa fas fa-home"></i><a href="/">Home</a>
             </li>
           </xsl:when>
           <xsl:otherwise>
@@ -96,7 +96,7 @@
         <xsl:choose>
           <xsl:when test="$first = ''">
             <li class="breadcrumb-item">
-              <i class="fa fa-home"></i><a href="/">Home</a>
+              <i class="fa fas fa-home"></i><a href="/">Home</a>
             </li>
           </xsl:when>
           <xsl:otherwise>
@@ -111,7 +111,7 @@
 
   <xsl:template match="directory">
     <tr>
-      <td class="n"><a href="{current()}/"><i class="fa fa-folder" style="padding-right: 5px;"></i><xsl:value-of select="."/></a>/</td>
+      <td class="n"><a href="{current()}/"><i class="fa fas fa-folder" style="padding-right: 5px;"></i><xsl:value-of select="."/></a>/</td>
       <td class="m"><xsl:call-template name="timestamp"><xsl:with-param name="iso-timestamp" select="@mtime" /></xsl:call-template></td>
       <td class="s">- &nbsp;</td>
     </tr>
@@ -127,10 +127,10 @@
 
     <xsl:choose>
       <xsl:when test="$extension = 'zip'">
-        <i class="fa fa-file-archive-o" style="padding-right: 5px;"></i>
+        <i class="fa fas fa-file-archive" style="padding-right: 5px;"></i>
       </xsl:when>
       <xsl:otherwise>
-        <i class="fa fa-file-o" style="padding-right: 5px;"></i>
+        <i class="fa fas fa-file" style="padding-right: 5px;"></i>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -172,41 +172,68 @@
       <head>
         <title>Debian Repositories</title>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css.map" type="text/css" />
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" type="text/css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous" />
+        <style type="text/css">
+          /* Sticky footer styles
+          -------------------------------------------------- */
+          html {
+            position: relative;
+            min-height: 100%;
+          }
+          body {
+            margin-bottom: 60px; /* Margin bottom by footer height */
+          }
+          .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px; /* Set the fixed height of the footer here */
+            line-height: 60px; /* Vertically center the text there */
+            background-color: #f5f5f5;
+          }
+
+          /* Custom page CSS
+          -------------------------------------------------- */
+          .container {
+            width: auto;
+            max-width: 980px;
+            padding: 0 15px;
+          }
+        </style>
       </head>
       <body>
-        <div class="container-fluid">
-          <div class="row-fluid">
-            <div class="col-md-8 col-md-offset-2">
-              <h1 class="page-header">Debian Repositories</h1>
-              <h2>Index of</h2>
-              <ol class="breadcrumb"><xsl:call-template name="breadcrumb"><xsl:with-param name="list" select="$path" /></xsl:call-template></ol>
-              <div class="list">
-                <table class="table" summary="Directory Listing" cellpadding="0" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th class="n">Name</th>
-                      <th class="m">Last Modified</th>
-                      <th class="s">Size</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="n"><a href="../"><i class="fa fa-level-up" style="padding-right: 5px;"></i>Parent Directory/</a></td>
-                      <td class="m">&nbsp;</td>
-                      <td class="s">- &nbsp;</td>
-                    </tr>
-                    <xsl:apply-templates />
-                  </tbody>
-                </table>
-              </div>
-            </div>
+        <!-- Begin page content -->
+        <main role="main" class="container">
+          <h1 class="mt-5">Debian Repositories</h1>
+          <h2>Index of</h2>
+          <ol class="breadcrumb"><xsl:call-template name="breadcrumb"><xsl:with-param name="list" select="$path" /></xsl:call-template></ol>
+          <div class="list">
+            <table class="table" summary="Directory Listing" cellpadding="0" cellspacing="0">
+              <thead>
+                <tr>
+                  <th class="n">Name</th>
+                  <th class="m">Last Modified</th>
+                  <th class="s">Size</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="n"><a href="../"><i class="fa fas fa-level-up-alt" style="padding-right: 5px;"></i>Parent Directory/</a></td>
+                  <td class="m">&nbsp;</td>
+                  <td class="s">- &nbsp;</td>
+                </tr>
+                <xsl:apply-templates />
+              </tbody>
+            </table>
           </div>
-        </div>
+        </main>
+
+        <footer class="footer">
+          <div class="container">
+            <span class="text-muted">Debian Repositories</span>
+          </div>
+        </footer>
       </body>
     </html>
   </xsl:template>
