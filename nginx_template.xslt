@@ -117,9 +117,51 @@
     </tr>
   </xsl:template>
 
+  <xsl:template name="icon">
+    <xsl:param name="path"/>
+    <xsl:variable name="extension">
+      <xsl:call-template name="get-file-extension">
+        <xsl:with-param name="path" select="$path" />
+      </xsl:call-template>
+    </xsl:variable>
+
+    <xsl:choose>
+      <xsl:when test="$extension = 'zip'">
+        <i class="fa fa-file-archive-o" style="padding-right: 5px;"></i>
+      </xsl:when>
+      <xsl:otherwise>
+        <i class="fa fa-file-o" style="padding-right: 5px;"></i>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="get-file-extension">
+    <xsl:param name="path"/>
+    <xsl:choose>
+      <xsl:when test="contains($path, '/')">
+        <xsl:call-template name="get-file-extension">
+          <xsl:with-param name="path" select="substring-after($path, '/')"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="contains($path, '.')">
+        <xsl:call-template name="get-file-extension">
+          <xsl:with-param name="path" select="substring-after($path, '.')"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$path"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
   <xsl:template match="file">
     <tr>
-      <td class="n"><a href="{current()}"><i class="fa fa-file-o" style="padding-right: 5px;"></i><xsl:value-of select="." /></a></td>
+      <td class="n">
+        <a href="{current()}">
+          <xsl:call-template name="icon"><xsl:with-param name="path" select="." /></xsl:call-template>
+          <xsl:value-of select="." />
+        </a>
+      </td>
       <td class="m"><xsl:call-template name="timestamp"><xsl:with-param name="iso-timestamp" select="@mtime" /></xsl:call-template></td>
       <td class="s"><xsl:call-template name="size"><xsl:with-param name="bytes" select="@size" /></xsl:call-template></td>
     </tr>
