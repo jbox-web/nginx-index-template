@@ -170,7 +170,7 @@
   <xsl:template match="/">
     <html>
       <head>
-        <title>Debian Repositories</title>
+        <title>Debian Repository</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" type="text/css" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" type="text/css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous" />
@@ -205,7 +205,7 @@
       <body>
         <!-- Begin page content -->
         <main role="main" class="container">
-          <h1 class="mt-5">Debian Repositories</h1>
+          <h1 class="mt-5">Debian Repository</h1>
           <h2>Index of</h2>
           <ol class="breadcrumb"><xsl:call-template name="breadcrumb"><xsl:with-param name="list" select="$path" /></xsl:call-template></ol>
           <div class="list">
@@ -231,7 +231,7 @@
 
         <footer class="footer">
           <div class="container">
-            <span class="text-muted">Debian Repositories</span>
+            <span class="text-muted">Debian Repository</span>
           </div>
         </footer>
       </body>
