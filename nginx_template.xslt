@@ -76,7 +76,7 @@
         <xsl:choose>
           <xsl:when test="$first = ''">
             <li class="breadcrumb-item">
-              <i class="fa fas fa-home"></i><a href="/">Home</a>
+              <i class="fas fa-home"></i><a href="/">Home</a>
             </li>
           </xsl:when>
           <xsl:otherwise>
@@ -96,7 +96,7 @@
         <xsl:choose>
           <xsl:when test="$first = ''">
             <li class="breadcrumb-item">
-              <i class="fa fas fa-home"></i><a href="/">Home</a>
+              <i class="fas fa-home"></i><a href="/">Home</a>
             </li>
           </xsl:when>
           <xsl:otherwise>
@@ -111,8 +111,18 @@
 
   <xsl:template match="directory">
     <tr>
-      <td class="n"><a href="{current()}/"><i class="fa fas fa-folder" style="padding-right: 5px;"></i><xsl:value-of select="."/></a>/</td>
-      <td class="m"><xsl:call-template name="timestamp"><xsl:with-param name="iso-timestamp" select="@mtime" /></xsl:call-template></td>
+      <td class="n">
+        <a href="{current()}/">
+          <code>
+            <i class="far fa-folder" style="padding-right: 5px;"></i><xsl:value-of select="."/>
+          </code>
+        </a>
+      </td>
+      <td class="m">
+        <code>
+          <xsl:call-template name="timestamp"><xsl:with-param name="iso-timestamp" select="@mtime" /></xsl:call-template>
+        </code>
+      </td>
       <td class="s">- &nbsp;</td>
     </tr>
   </xsl:template>
@@ -126,11 +136,17 @@
     </xsl:variable>
 
     <xsl:choose>
+      <xsl:when test="$extension = 'bz2'">
+        <i class="far fa-file-archive" style="padding-right: 5px;"></i>
+      </xsl:when>
+      <xsl:when test="$extension = 'gz'">
+        <i class="far fa-file-archive" style="padding-right: 5px;"></i>
+      </xsl:when>
       <xsl:when test="$extension = 'zip'">
-        <i class="fa fas fa-file-archive" style="padding-right: 5px;"></i>
+        <i class="far fa-file-archive" style="padding-right: 5px;"></i>
       </xsl:when>
       <xsl:otherwise>
-        <i class="fa fas fa-file" style="padding-right: 5px;"></i>
+        <i class="far fa-file" style="padding-right: 5px;"></i>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -158,12 +174,22 @@
     <tr>
       <td class="n">
         <a href="{current()}">
-          <xsl:call-template name="icon"><xsl:with-param name="path" select="." /></xsl:call-template>
-          <xsl:value-of select="." />
+          <code>
+            <xsl:call-template name="icon"><xsl:with-param name="path" select="." /></xsl:call-template>
+            <xsl:value-of select="." />
+          </code>
         </a>
       </td>
-      <td class="m"><xsl:call-template name="timestamp"><xsl:with-param name="iso-timestamp" select="@mtime" /></xsl:call-template></td>
-      <td class="s"><xsl:call-template name="size"><xsl:with-param name="bytes" select="@size" /></xsl:call-template></td>
+      <td class="m">
+        <code>
+          <xsl:call-template name="timestamp"><xsl:with-param name="iso-timestamp" select="@mtime" /></xsl:call-template>
+        </code>
+      </td>
+      <td class="s">
+        <code>
+          <xsl:call-template name="size"><xsl:with-param name="bytes" select="@size" /></xsl:call-template>
+        </code>
+      </td>
     </tr>
   </xsl:template>
 
@@ -172,8 +198,8 @@
       <head>
         <title>Debian Repository</title>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" integrity="sha256-zmfNZmXoNWBMemUOo1XUGFfc0ihGGLYdgtJS3KCr/l0=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha256-L/W5Wfqfa0sdBNIKN9cG6QA5F2qx4qICmU2VgLruv9Y=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
         <style type="text/css">
           /* Sticky footer styles
           -------------------------------------------------- */
@@ -206,7 +232,6 @@
         <!-- Begin page content -->
         <main role="main" class="container">
           <h1 class="mt-5">Debian Repository</h1>
-          <h2>Index of</h2>
           <ol class="breadcrumb"><xsl:call-template name="breadcrumb"><xsl:with-param name="list" select="$path" /></xsl:call-template></ol>
           <div class="list">
             <table class="table" summary="Directory Listing" cellpadding="0" cellspacing="0">
@@ -219,7 +244,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td class="n"><a href="../"><i class="fa fas fa-level-up-alt" style="padding-right: 5px;"></i>Parent Directory/</a></td>
+                  <td class="n"><a href="../"><i class="fas fa-level-up-alt" style="padding-right: 5px;"></i>Parent Directory/</a></td>
                   <td class="m">&nbsp;</td>
                   <td class="s">- &nbsp;</td>
                 </tr>
