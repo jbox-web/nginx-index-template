@@ -27,3 +27,5 @@ server {
 }
 
 ```
+
+![Screenshot](/images/screenshot.png?raw=true "Screenshot")
