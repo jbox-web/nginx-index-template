@@ -142,6 +142,9 @@
       <xsl:when test="$extension = 'gz'">
         <i class="far fa-file-archive" style="padding-right: 5px;"></i>
       </xsl:when>
+      <xsl:when test="$extension = 'xz'">
+        <i class="far fa-file-archive" style="padding-right: 5px;"></i>
+      </xsl:when>
       <xsl:when test="$extension = 'zip'">
         <i class="far fa-file-archive" style="padding-right: 5px;"></i>
       </xsl:when>
