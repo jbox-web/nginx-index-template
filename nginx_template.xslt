@@ -1,12 +1,5 @@
 <?xml version="1.0"?>
 <!--
-  dirlist.xslt - transform nginx's into lighttpd look-alike dirlistings
-
-  I'm currently switching over completely from lighttpd to nginx. If you come
-  up with a prettier stylesheet or other improvements, please tell me :)
-
--->
-<!--
    Copyright (c) 2016 by Moritz Wilhelmy <mw@barfooze.de>
    All rights reserved
 
