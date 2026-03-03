@@ -16,7 +16,7 @@ build: ## Compile to development binary
 	export BOOTSTRAP_SHA=$(BOOTSTRAP_SHA) && \
 	export FONTAWESOME_URL=$(FONTAWESOME_URL) && \
 	export FONTAWESOME_SHA=$(FONTAWESOME_SHA) && \
-	envsubst '$$BOOTSTRAP_URL $$BOOTSTRAP_SHA $$FONTAWESOME_URL $$FONTAWESOME_SHA' < nginx_template.xslt.tmpl.xslt > nginx_template.xslt
+	envsubst '$$BOOTSTRAP_URL $$BOOTSTRAP_SHA $$FONTAWESOME_URL $$FONTAWESOME_SHA' < nginx_template.xslt.tmpl > nginx_template.xslt
 
 .PHONY: all
 
