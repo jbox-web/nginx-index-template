@@ -192,7 +192,7 @@
   <xsl:template match="/">
     <html>
       <head>
-        <title>Debian Repository</title>
+        <title>${PAGE_TITLE}</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="${BOOTSTRAP_URL}" integrity="${BOOTSTRAP_SHA}" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="${FONTAWESOME_URL}" integrity="${FONTAWESOME_SHA}" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -235,7 +235,7 @@
       <body>
         <!-- Begin page content -->
         <main role="main" class="container">
-          <h1 class="mt-5">Debian Repository</h1>
+          <h1 class="mt-5">${PAGE_HEADER}</h1>
           <ol class="breadcrumb"><xsl:call-template name="breadcrumb"><xsl:with-param name="list" select="$path" /></xsl:call-template></ol>
           <div class="list">
             <table class="table" summary="Directory Listing" cellpadding="0" cellspacing="0">
@@ -260,7 +260,7 @@
 
         <footer class="footer">
           <div class="container">
-            <span class="text-muted">Debian Repository</span>
+            <span class="text-muted">${PAGE_FOOTER}</span>
           </div>
         </footer>
       </body>
